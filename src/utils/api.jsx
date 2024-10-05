@@ -1,5 +1,7 @@
 export const userData = JSON.parse(localStorage.getItem("user"));
-export const url = import.meta.env.API_URL;
+export const url = import.meta.env.VITE_API_URL;
+console.log(url);
+
 const request = async (
   route,
   method,
@@ -7,24 +9,20 @@ const request = async (
   isPrivate = false,
   headers = {}
 ) => {
-  try {
-    const options = {
-      method,
-      headers: { "Content-Type": "application/json", ...headers },
-      ...(body && { body: JSON.stringify(body) }), // Include body only if it exists
-    };
+  const options = {
+    method,
+    headers: { "Content-Type": "application/json", ...headers },
+    ...(body && { body: JSON.stringify(body) }), // Include body only if it exists
+  };
 
-    // Add Authorization header for private requests
-    if (isPrivate) {
-      const token = localStorage.getItem("token");
-      if (!token) throw new Error("No authorization token found!");
-      options.headers.Authorization = `Bearer ${token}`;
-    }
-    const response = await fetch(`${API_URL}${route}`, options);
-    return await response.json();
-  } catch (error) {
-    throw error;
+  // Add Authorization header for private requests
+  if (isPrivate) {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("No authorization token found!");
+    options.headers.Authorization = `Bearer ${token}`;
   }
+  const response = await fetch(`${url}${route}`, options);
+  return await response.json();
 };
 
 // Generic HTTP methods that can handle both public and private requests
