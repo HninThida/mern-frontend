@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #3498db; /* You can change this to any color */
+  }
+.nav-link.active{
+    color: var(--primary-color) !important;
+    font-weight: 400 !important;
+}
+.btn-primary{
+    background-color:  var(--primary-color) !important;
+    border-color:  var(--primary-color) !important;
+    border-width: 1px; 
+
+
+}
+.btn-outline-primary{
+    border-color:  var(--primary-color) !important;
+    border-width: 1px; 
+ }
+.btn-outline-primary:hover{
+    border: var(--primary-color) !important;
+    background-color: var(--primary-color) ;
+}
