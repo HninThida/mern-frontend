@@ -1,6 +1,5 @@
-/* eslint-disable no-useless-catch */
 export const userData = JSON.parse(localStorage.getItem("user"));
-
+export const url = import.meta.env.API_URL;
 const request = async (
   route,
   method,
@@ -21,7 +20,7 @@ const request = async (
       if (!token) throw new Error("No authorization token found!");
       options.headers.Authorization = `Bearer ${token}`;
     }
-    const response = await fetch(`http://localhost:5000/api/${route}`, options);
+    const response = await fetch(`${API_URL}${route}`, options);
     return await response.json();
   } catch (error) {
     throw error;
