@@ -11,7 +11,13 @@ const request = async (
 ) => {
   const options = {
     method,
-    headers: { "Content-Type": "application/json", ...headers },
+    mode: "cors",
+    cache: "default",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      ...headers,
+    },
     ...(body && { body: JSON.stringify(body) }),
   };
 
