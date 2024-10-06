@@ -12,7 +12,7 @@ const request = async (
   const options = {
     method,
     headers: { "Content-Type": "application/json", ...headers },
-    ...(body && { body: JSON.stringify(body) }), // Include body only if it exists
+    ...(body && { body: JSON.stringify(body) }),
   };
 
   // Add Authorization header for private requests
