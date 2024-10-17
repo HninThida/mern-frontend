@@ -11,7 +11,7 @@ const request = async (
 ) => {
   const options = {
     method,
-    mode: "cors",
+    mode: "no-cors",
     cache: "default",
     headers: {
       "Content-Type": "application/json",
